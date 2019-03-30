@@ -1,13 +1,24 @@
 const express = require("express");
-
+const firebaseHelper = require("firebase-functions-helper");
 const router = express.Router();
 
+const db = require("../startup/firebaseDB");
+
+const contactsCollection = "contacts";
+
 // Add new contact
-router.post("/", (req, res) => {
-  firebaseHelper.firestore
-    .createNewDocument(db, contactsCollection, req.body)
-    .then(doc => res.send("Create a new contact"))
-    .catch(ex => res.status(401).send(ex));
+router.post("/", async (req, res) => {
+  let doc;
+  try {
+    doc = await firebaseHelper.firestore.createNewDocument(
+      db,
+      contactsCollection,
+      req.body
+    );
+  } catch (ex) {
+    res.status(401).send(ex);
+  }
+  res.status(200).send(doc);
 });
 
 // Update new contact
