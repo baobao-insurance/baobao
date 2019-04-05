@@ -9,6 +9,7 @@ Accept insurance request from clients and notify potential agents for accepting 
 1. Insurance type
    -life
    -investment
+   -medical
 2. amount
 3. agent prefered gender
    M,F,ANY
@@ -38,4 +39,4 @@ Search and shortlist agent according to criteria
 
 ### Output
 
-notification of agent list to foreign service
+notification of agent list to backend service
