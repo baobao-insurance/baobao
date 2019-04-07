@@ -8,6 +8,7 @@ const firebaseHttpsRequest = require("./startup/firebaseHttpsRequest");
 // exports.helloWorld = functions.https.onRequest((request, response) => {
 //  response.send("Hello from Firebase!");
 // });
+require("./startup/firebaseInit");
 
 const express = require("express");
 const bodyParser = require("body-parser");

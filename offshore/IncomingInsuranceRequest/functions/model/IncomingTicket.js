@@ -1,6 +1,6 @@
 const Joi = require("joi");
 const {
-  AgentGender,
+  Gender,
   InsuranceType,
   AgentExp,
   AgeGrp,
@@ -22,7 +22,7 @@ const schema = {
   agentGender: Joi.number()
     .integer()
     .min(0)
-    .max(Object.keys(AgentGender).length)
+    .max(Object.keys(Gender).length)
     .required(),
   agentExp: Joi.number()
     .integer()

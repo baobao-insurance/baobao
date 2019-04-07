@@ -24,7 +24,7 @@ module.exports.AgeGrp = {
   E40: 4
 };
 
-module.exports.AgentGender = {
+module.exports.Gender = {
   ANY: 0,
   MALE: 1,
   FEMALE: 2

@@ -9,11 +9,11 @@ describe("Test User Auth", () => {
   beforeAll(() => {
     // you can use `sinon.stub` instead
     // Initialize the app with a custom auth variable, limiting the server's access
-    var serviceAccount = require(`${homedir}/.ssh/baobao/baobao-235814-firebase-adminsdk-zyh38-ce8e4f3313.json`);
+    var serviceAccount = require(`${homedir}/.ssh/baobao_insurance/baobao-insurance-firebase-adminsdk-o2p8u-01de9d04b9.json`);
 
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
-      databaseURL: "https://baobao-235814.firebaseio.com/",
+      databaseURL: "https://baobao-insurance.firebaseio.com/",
       databaseAuthVariableOverride: {
         uid: "my-service-worker"
       }

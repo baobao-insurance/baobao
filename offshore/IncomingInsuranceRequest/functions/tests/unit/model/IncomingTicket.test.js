@@ -1,7 +1,7 @@
 const { validateIncomingTicket } = require("../../../model/IncomingTicket");
 const uuidv4 = require("uuid/v4");
 const {
-  AgentGender,
+  Gender,
   InsuranceType,
   AgeGrp,
   AgentExp,
@@ -17,7 +17,7 @@ describe("Test incoming ticket", () => {
       uid: "^^^",
       insurance_type: InsuranceType.investment,
       amount: 1000000,
-      agentGender: AgentGender.ANY,
+      agentGender: Gender.ANY,
       agentExp: AgentExp.ANY,
       agentAgeGrp: AgeGrp.E25_30,
       language: [Language.Cantonese, Language.Mandarin]
@@ -28,7 +28,7 @@ describe("Test incoming ticket", () => {
     ticket = {
       insurance_type: InsuranceType.investment,
       amount: 1000000,
-      agentGender: AgentGender.ANY,
+      agentGender: Gender.ANY,
       agentExp: AgentExp.ANY,
       agentAgeGrp: AgeGrp.E25_30,
       language: [Language.Cantonese]
@@ -40,7 +40,7 @@ describe("Test incoming ticket", () => {
       uid: uuidv4().toString(),
       insurance_type: InsuranceType.investment,
       amount: 1000000,
-      agentGender: AgentGender.ANY,
+      agentGender: Gender.ANY,
       agentExp: AgentExp.ANY,
       agentAgeGrp: AgeGrp.E25_30,
       language: [Language.Mandarin]
