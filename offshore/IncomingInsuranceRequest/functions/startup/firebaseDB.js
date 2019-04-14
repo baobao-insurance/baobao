@@ -43,31 +43,14 @@ class FireBaseDao {
       .digest()
       .toString("hex");
   }
-  /*
-  async insertDoc(doc) {
-    let key = doc[this.uniqueKey];
-    DEBUG("docRef collection ", this.name);
-
-    let Query = this.docRef.where(this.uniqueKey, "==", key);
-    
-    Query.get()
-      .then(function(doc) {
-        if (doc.exists) {
-          console.log("Document data:", doc.data());
-        } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
-        }
-      })
-      .catch(function(error) {
-        console.log("Error getting document:", error);
-      });
-  }
-  */
 
   async insert(doc) {
     let newdoc;
-    this.validate(doc);
+    const err = this.validate(doc);
+    //console.log(err.error);
+    if (err.error != null) {
+      throw new Error(err.error);
+    }
     let key = this.getHashKey(doc[this.uniqueKey]);
 
     const res = this.docRef.doc(key).set(doc);
@@ -76,7 +59,11 @@ class FireBaseDao {
   }
 
   async getDoc(key) {
-    let Query = this.docRef.doc(this.getHashKey(key));
+    const hashKey = this.getHashKey(key);
+    this.getDocByHashedKey(hashKey);
+  }
+  async getDocByHashedKey(hashkey) {
+    let Query = this.docRef.doc(hashkey);
 
     try {
       const doc = await Query.get();
@@ -95,6 +82,23 @@ class FireBaseDao {
     const docList = [];
     try {
       const querySnapshot = await Query.get();
+      querySnapshot.forEach(doc => docList.push(doc.data()));
+    } catch (error) {
+      throw new Error(error);
+    }
+    return docList;
+  }
+
+  prepareQuery(field, operator, value, ChainQuery) {
+    if (ChainQuery == null) {
+      return this.docRef.where(field, operator, value);
+    }
+    return null;
+  }
+  async executeQuery(query) {
+    const docList = [];
+    try {
+      const querySnapshot = await query.get();
       querySnapshot.forEach(doc => docList.push(doc.data()));
     } catch (error) {
       throw new Error(error);

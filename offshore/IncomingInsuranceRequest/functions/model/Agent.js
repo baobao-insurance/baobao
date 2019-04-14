@@ -5,7 +5,9 @@ const DEBUG = require("debug")("app:dev");
 const { FireBaseDao } = require("../startup/firebaseDB");
 
 const schema = {
-  email: Joi.string().email({ minDomainAtoms: 2 }),
+  email: Joi.string()
+    .email({ minDomainAtoms: 2 })
+    .required(),
   name: Joi.string()
     .min(2)
     .max(50)
@@ -15,11 +17,13 @@ const schema = {
     .min(1)
     .max(Object.keys(Gender).length)
     .required(),
-  birth: Joi.date().max(
-    moment()
-      .add(-18, "y")
-      .toDate()
-  ),
+  birth: Joi.date()
+    .max(
+      moment()
+        .add(-18, "y")
+        .toDate()
+    )
+    .required(),
   language: Joi.array()
     .min(1)
     .max(Object.keys(Language).length)

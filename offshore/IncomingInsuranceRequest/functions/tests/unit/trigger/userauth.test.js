@@ -1,12 +1,13 @@
+const testEnv = require("../../firebaseTestObj");
 const admin = require("firebase-admin");
 
-const testEnv = require("../../firebaseTestObj");
-const homedir = require("os").homedir();
+//const homedir = require("os").homedir();
 const ALLOW_TIMEOUT = 1000000;
 describe("Test User Auth", () => {
   let adminStub, api;
 
   beforeAll(() => {
+    /*
     // you can use `sinon.stub` instead
     // Initialize the app with a custom auth variable, limiting the server's access
     var serviceAccount = require(`${homedir}/.ssh/baobao_insurance/baobao-insurance-firebase-adminsdk-o2p8u-01de9d04b9.json`);
@@ -20,7 +21,7 @@ describe("Test User Auth", () => {
     });
 
     adminStub = jest.spyOn(admin, "initializeApp");
-
+*/
     // after initializeApp call, we load our functions
     api = require("../../../trigger/userauth");
     //console.log(api);
