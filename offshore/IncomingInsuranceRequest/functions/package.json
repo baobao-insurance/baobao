@@ -17,6 +17,7 @@
     "firebase-functions": "^2.2.0",
     "firebase-functions-helper": "^0.7.0",
     "joi": "^14.3.1",
+    "keccak": "^2.0.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "sinon": "^7.3.1",

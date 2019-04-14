@@ -1,7 +1,7 @@
 const Joi = require("joi");
 const { Language, InsuranceType, Gender } = require("./DataType");
 const moment = require("moment");
-
+const DEBUG = require("debug")("app:dev");
 const { FireBaseDao } = require("../startup/firebaseDB");
 
 const schema = {

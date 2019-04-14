@@ -1,5 +1,5 @@
 const moment = require("moment");
-
+const DEBUG = require("debug")("app:dev");
 const admin = require("firebase-admin");
 const homedir = require("os").homedir();
 var serviceAccount = require(`${homedir}/.ssh/baobao_insurance/baobao-insurance-firebase-adminsdk-o2p8u-01de9d04b9.json`);
@@ -83,18 +83,39 @@ describe("test agent", () => {
     "save agent into Firebase",
     async () => {
       validateUser(user);
+      const result = await Agent.insert(user);
+      //console.log(result);
 
-      const result = await Agent.save(user);
+      const queryUser = await Agent.queryByField(
+        Agent.uniqueKey,
+        user[Agent.uniqueKey]
+      );
+      expect(queryUser).not.toBeNull();
+      expect(queryUser.length).toBe(1);
+
+      //console.log(Agent.getHashKey(user.email));
     },
     ALLOW_TIMEOUT
   );
 
   it(
-    "reject duplicated agent into Firebase",
+    "save agent into Firebase",
     async () => {
-      let result = await Agent.save(user);
-      result = await Agent.insertDoc(user);
+      const queryUser = await Agent.getDoc(user.email);
+      expect(queryUser).not.toBeNull();
     },
     ALLOW_TIMEOUT
   );
+
+  /*
+  it(
+    "reject duplicated agent into Firebase",
+    async () => {
+      let result = await Agent.save(user);
+      DEBUG("run insert Doc");
+      //https://bigcodenerd.org/enforce-cloud-firestore-unique-field-values/
+      result = await Agent.insertDoc(user);
+    },
+    ALLOW_TIMEOUT
+  );*/
 });
