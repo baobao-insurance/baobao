@@ -18,6 +18,7 @@ module.exports.AgentExp = {
 };
 
 module.exports.AgeGrp = {
+  ANY: 0,
   E18_25: 1,
   E25_30: 2,
   E30_40: 3,

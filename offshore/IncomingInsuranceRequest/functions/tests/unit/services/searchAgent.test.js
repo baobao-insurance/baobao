@@ -15,12 +15,12 @@ describe("test agent", () => {
   beforeEach(() => {
     ticket = {
       uid: uuidv4().toString(),
-      insurance_type: InsuranceType.investment,
+      insurance_type: InsuranceType.medical,
       amount: 1000000,
       agentGender: Gender.ANY,
       agentExp: AgentExp.ANY,
-      agentAgeGrp: AgeGrp.E25_30,
-      language: [Language.Mandarin]
+      agentAgeGrp: AgeGrp.ANY,
+      language: Language.Mandarin
     };
   });
 
@@ -36,12 +36,16 @@ describe("test agent", () => {
     }
   });
 
-  it("should return query with valid ticket", async () => {
-    try {
-      await searchIncomingTicket(ticket);
-    } catch (ex) {
-      //console.log(ex.message);
-      expect(ex.message).toMatch(/\"insurance_type\" is required/);
-    }
+  it("should return query with valid gender + insurance type", async () => {
+    ticket.agentGender = Gender.FEMALE;
+    const agents = await searchIncomingTicket(ticket);
+    expect(agents.length).toBe(0);
+  });
+
+  it("should return query with valid gender + insurance type + lang", async () => {
+    ticket.agentGender = Gender.MALE;
+    ticket.agentAgeGrp = AgeGrp.E25_30;
+    const agents = await searchIncomingTicket(ticket);
+    expect(agents.length).toBe(1);
   });
 });

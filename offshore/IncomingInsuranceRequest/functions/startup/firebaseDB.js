@@ -92,14 +92,16 @@ class FireBaseDao {
   prepareQuery(field, operator, value, ChainQuery) {
     if (ChainQuery == null) {
       return this.docRef.where(field, operator, value);
+    } else {
+      return ChainQuery.where(field, operator, value);
     }
-    return null;
   }
   async executeQuery(query) {
     const docList = [];
     try {
       const querySnapshot = await query.get();
-      querySnapshot.forEach(doc => docList.push(doc.data()));
+      if (querySnapshot != null)
+        querySnapshot.forEach(doc => docList.push(doc.data()));
     } catch (error) {
       throw new Error(error);
     }

@@ -20,7 +20,7 @@ describe("Test incoming ticket", () => {
       agentGender: Gender.ANY,
       agentExp: AgentExp.ANY,
       agentAgeGrp: AgeGrp.E25_30,
-      language: [Language.Cantonese, Language.Mandarin]
+      language: Language.Cantonese
     };
     error = validateIncomingTicket(ticket);
     expect(error.error).toBeDefined();
@@ -31,7 +31,7 @@ describe("Test incoming ticket", () => {
       agentGender: Gender.ANY,
       agentExp: AgentExp.ANY,
       agentAgeGrp: AgeGrp.E25_30,
-      language: [Language.Cantonese]
+      language: Language.Cantonese
     };
     error = validateIncomingTicket(ticket);
     expect(error.error).not.toBeNull();
@@ -42,8 +42,8 @@ describe("Test incoming ticket", () => {
       amount: 1000000,
       agentGender: Gender.ANY,
       agentExp: AgentExp.ANY,
-      agentAgeGrp: AgeGrp.E25_30,
-      language: [Language.Mandarin]
+      agentAgeGrp: AgeGrp.ANY,
+      language: Language.Mandarin
     };
 
     error = validateIncomingTicket(ticket);

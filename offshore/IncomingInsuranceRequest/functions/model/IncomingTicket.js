@@ -31,10 +31,11 @@ const schema = {
     .required(),
   agentAgeGrp: Joi.number()
     .integer()
-    .min(1)
+    .min(0)
     .max(Object.keys(AgeGrp).length)
     .required(),
-  language: Joi.array()
+  language: Joi.number()
+    .integer()
     .min(1)
     .max(Object.keys(Language).length)
     .required()
