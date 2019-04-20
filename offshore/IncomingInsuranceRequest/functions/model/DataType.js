@@ -1,4 +1,5 @@
 module.exports.Language = {
+  ANY: 0,
   Cantonese: 1,
   Mandarin: 2,
   English: 3

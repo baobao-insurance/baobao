@@ -42,6 +42,33 @@ describe("test agent", () => {
     expect(agents.length).toBe(0);
   });
 
+  it("should return nothing with valid gender + insurance type + lang", async () => {
+    ticket.agentGender = Gender.MALE;
+    ticket.agentAgeGrp = AgeGrp.E25_30;
+    ticket.language = Language.English;
+    const agents = await searchIncomingTicket(ticket);
+    //console.log(agents);
+    expect(agents.length).toBe(0);
+  });
+
+  it("should return nothing with valid gender + insurance type + lang +exp", async () => {
+    ticket.agentGender = Gender.MALE;
+    ticket.agentAgeGrp = AgeGrp.E25_30;
+    ticket.language = Language.ANY;
+    ticket.agentExp = AgentExp.E2Y_5Y;
+    const agents = await searchIncomingTicket(ticket);
+    //console.log(agents);
+    expect(agents.length).toBe(0);
+  });
+  it("should return query with valid gender + insurance type + lang +exp", async () => {
+    ticket.agentGender = Gender.MALE;
+    ticket.agentAgeGrp = AgeGrp.E25_30;
+    ticket.language = Language.ANY;
+    ticket.agentExp = AgentExp.E10Y;
+    const agents = await searchIncomingTicket(ticket);
+    //console.log(agents);
+    expect(agents.length).toBe(1);
+  });
   it("should return query with valid gender + insurance type + lang", async () => {
     ticket.agentGender = Gender.MALE;
     ticket.agentAgeGrp = AgeGrp.E25_30;

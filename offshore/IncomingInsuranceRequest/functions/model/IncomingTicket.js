@@ -36,7 +36,7 @@ const schema = {
     .required(),
   language: Joi.number()
     .integer()
-    .min(1)
+    .min(Language.ANY)
     .max(Object.keys(Language).length)
     .required()
 };

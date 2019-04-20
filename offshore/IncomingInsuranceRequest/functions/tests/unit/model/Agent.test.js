@@ -23,18 +23,22 @@ describe("test agent", () => {
           .toDate(),
         gender: Gender.FEMALE,
         language: [Language.Cantonese, Language.Mandarin],
-        agentLicenseDate: new Date(),
+        agentLicenseDate: moment()
+          .add(-3, "y")
+          .toDate(),
         insurance_type: [InsuranceType.investment, InsuranceType.life]
       },
       {
         email: "siukoeng@abcd.com",
         name: "小強",
         birth: moment()
-          .add(-28, "y")
+          .add(-29, "y")
           .toDate(),
         gender: Gender.MALE,
         language: [Language.Cantonese, Language.Mandarin],
-        agentLicenseDate: new Date(),
+        agentLicenseDate: moment()
+          .add(-11, "y")
+          .toDate(),
         insurance_type: [InsuranceType.life, InsuranceType.medical]
       },
       {
@@ -45,7 +49,9 @@ describe("test agent", () => {
           .toDate(),
         gender: Gender.FEMALE,
         language: [Language.Mandarin],
-        agentLicenseDate: new Date(),
+        agentLicenseDate: moment()
+          .add(-1, "y")
+          .toDate(),
         insurance_type: [InsuranceType.investment]
       }
     ];
