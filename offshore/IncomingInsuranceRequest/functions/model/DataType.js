@@ -12,10 +12,10 @@ module.exports.InsuranceType = {
 };
 
 module.exports.AgentExp = {
-  ANY: 1,
-  E2Y_5Y: 2,
-  E5Y_10Y: 3,
-  E10Y: 4
+  ANY: 0,
+  E2Y_5Y: 1,
+  E5Y_10Y: 2,
+  E10Y: 3
 };
 
 module.exports.AgeGrp = {

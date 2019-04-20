@@ -13,7 +13,7 @@ const {
 const searchIncomingTicket = async ticket => {
   let err;
   err = validateIncomingTicket(ticket);
-  if (err.error != null) {
+  if (err.error !== null) {
     throw new Error(err.error);
   }
 
@@ -112,6 +112,7 @@ const searchIncomingTicket = async ticket => {
       );
     });
   }
+
   //console.log(docList);
   return docList;
 };

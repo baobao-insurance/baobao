@@ -32,7 +32,7 @@ describe("test agent", () => {
       throw new Error("insurance_type is missing");
     } catch (ex) {
       //console.log(ex.message);
-      expect(ex.message).toMatch(/\"insurance_type\" is required/);
+      expect(ex.message).toMatch(/"insurance_type" is required/);
     }
   });
 

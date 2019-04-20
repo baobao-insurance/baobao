@@ -13,7 +13,7 @@ const isHex = str => {
 };
 const isBase64 = str => {
   var index;
-  if (str.length % 4 > 0 || str.match(/[^0-9a-z+\/=]/i)) return false;
+  if (str.length % 4 > 0 || str.match(/[^0-9a-z+/=]/i)) return false;
   index = str.indexOf("=");
   if (index === -1 || str.slice(index).match(/={1,2}/)) return true;
   return false;
@@ -48,7 +48,7 @@ class FireBaseDao {
     let newdoc;
     const err = this.validate(doc);
     //console.log(err.error);
-    if (err.error != null) {
+    if (err.error !== null) {
       throw new Error(err.error);
     }
     let key = this.getHashKey(doc[this.uniqueKey]);
@@ -90,7 +90,7 @@ class FireBaseDao {
   }
 
   prepareQuery(field, operator, value, ChainQuery) {
-    if (ChainQuery == null) {
+    if (ChainQuery === undefined) {
       return this.docRef.where(field, operator, value);
     } else {
       return ChainQuery.where(field, operator, value);
@@ -100,7 +100,7 @@ class FireBaseDao {
     const docList = [];
     try {
       const querySnapshot = await query.get();
-      if (querySnapshot != null)
+      if (querySnapshot !== null)
         querySnapshot.forEach(doc => docList.push(doc.data()));
     } catch (error) {
       throw new Error(error);

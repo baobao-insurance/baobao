@@ -95,9 +95,7 @@ describe("test agent", () => {
     };
     error = validateUser(user);
     expect(error.error).not.toBeNull();
-    expect(error.error.details[0].message).toMatch(
-      /\"birth\" must be less than/
-    );
+    expect(error.error.details[0].message).toMatch(/"birth" must be less than/);
 
     user = {
       email: "abcd@abcd.com",
@@ -119,7 +117,7 @@ describe("test agent", () => {
       const result = await Agent.insert(user);
       throw new Error("email is missing");
     } catch (ex) {
-      expect(ex.message).toMatch(/\"email\" is required/);
+      expect(ex.message).toMatch(/"email" is required/);
     }
   });
 

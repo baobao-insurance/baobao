@@ -9,7 +9,7 @@ const {
 
 const schema = {
   uid: Joi.string()
-    .regex(/^[a-z|0-9|\-\_]+$/i)
+    .regex(/^[a-z|0-9|\-_]+$/i)
     .required(),
   insurance_type: Joi.number()
     .integer()
@@ -26,7 +26,7 @@ const schema = {
     .required(),
   agentExp: Joi.number()
     .integer()
-    .min(1)
+    .min(AgentExp.ANY)
     .max(Object.keys(AgentExp).length)
     .required(),
   agentAgeGrp: Joi.number()
