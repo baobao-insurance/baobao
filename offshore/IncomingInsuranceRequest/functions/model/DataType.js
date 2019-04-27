@@ -1,14 +1,14 @@
 module.exports.Language = {
-  ANY: 0,
-  Cantonese: 1,
-  Mandarin: 2,
-  English: 3
+  ANY: "ANY",
+  Cantonese: "Cantonese",
+  Mandarin: "Mandarin",
+  English: "English"
 };
 
 module.exports.InsuranceType = {
-  life: 1,
-  investment: 2,
-  medical: 3
+  life: "life",
+  investment: "investment",
+  medical: "medical"
 };
 
 module.exports.AgentExp = {
@@ -27,7 +27,7 @@ module.exports.AgeGrp = {
 };
 
 module.exports.Gender = {
-  ANY: 0,
-  MALE: 1,
-  FEMALE: 2
+  ANY: "ANY",
+  MALE: "MALE",
+  FEMALE: "FEMALE"
 };

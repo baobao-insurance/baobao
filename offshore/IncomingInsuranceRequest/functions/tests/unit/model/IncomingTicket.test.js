@@ -8,7 +8,7 @@ const {
   Language
 } = require("../../../model/DataType");
 
-describe("Test incoming ticket", () => {
+describe("incoming ticket", () => {
   let error;
   it("validate IncomingTicket", () => {
     //ticket = new IncomingTicket();

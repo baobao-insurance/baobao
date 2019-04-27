@@ -11,19 +11,11 @@ const schema = {
   uid: Joi.string()
     .regex(/^[a-z|0-9|\-_]+$/i)
     .required(),
-  insurance_type: Joi.number()
-    .integer()
-    .min(1)
-    .max(Object.keys(InsuranceType).length)
-    .required(),
+  insurance_type: Joi.string().required(),
   amount: Joi.number()
     .greater(0)
     .required(),
-  agentGender: Joi.number()
-    .integer()
-    .min(0)
-    .max(Object.keys(Gender).length)
-    .required(),
+  agentGender: Joi.string().required(),
   agentExp: Joi.number()
     .integer()
     .min(AgentExp.ANY)
@@ -34,11 +26,7 @@ const schema = {
     .min(0)
     .max(Object.keys(AgeGrp).length)
     .required(),
-  language: Joi.number()
-    .integer()
-    .min(Language.ANY)
-    .max(Object.keys(Language).length)
-    .required()
+  language: Joi.string().required()
 };
 
 validateIncomingTicket = ticket => {

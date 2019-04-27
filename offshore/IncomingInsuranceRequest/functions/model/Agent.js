@@ -12,11 +12,7 @@ const schema = {
     .min(2)
     .max(50)
     .required(),
-  gender: Joi.number()
-    .integer()
-    .min(1)
-    .max(Object.keys(Gender).length)
-    .required(),
+  gender: Joi.string().required(),
   birth: Joi.date()
     .max(
       moment()
@@ -25,13 +21,11 @@ const schema = {
     )
     .required(),
   language: Joi.array()
-    .min(1)
-    .max(Object.keys(Language).length)
+    .items(Joi.string())
     .required(),
   agentLicenseDate: Joi.date().max("now"),
   insurance_type: Joi.array()
-    .min(1)
-    .max(Object.keys(InsuranceType).length)
+    .items(Joi.string())
     .required()
 };
 

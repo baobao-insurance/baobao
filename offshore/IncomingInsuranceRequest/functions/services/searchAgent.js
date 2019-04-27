@@ -71,10 +71,16 @@ const searchIncomingTicket = async ticket => {
   }
   let docList = await Agent.executeQuery(query);
 
+  docList.map(x => {
+    x.birth = x.birth.toDate();
+    x.agentLicenseDate = x.agentLicenseDate.toDate();
+    return x;
+  });
+
   //filtering by rest of the fields: experience and language
   //4. agent exp
   //debug("ticket.language" + ticket.language);
-  if (ticket.language > Language.ANY) {
+  if (ticket.language !== Language.ANY) {
     //debug("entering the lauguage selection");
     docList = docList.filter(x => x.language.includes(ticket.language));
     //debug(docList);
@@ -104,8 +110,8 @@ const searchIncomingTicket = async ticket => {
       return (
         moment()
           .add(-1 * min, "y")
-          .toDate() >= x.agentLicenseDate.toDate() &&
-        x.agentLicenseDate.toDate() >
+          .toDate() >= x.agentLicenseDate &&
+        x.agentLicenseDate >
           moment()
             .add(-1 * max, "y")
             .toDate()
